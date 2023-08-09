@@ -32,7 +32,6 @@ def upload_picture_to_s3(file_path, user):
     print(f"filename={file_name} type={type(file_name)}")
 
     try:
-        s3 = boto3.client('s3') # assuming AWS credentials are properly configured
         with open(file_path, 'rb') as data:
             s3.upload_fileobj(data, bucket_name, f"users/{user.id}/{file_name}")
         print("File uploaded successfully.")
